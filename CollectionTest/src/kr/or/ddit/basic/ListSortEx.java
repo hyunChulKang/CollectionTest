@@ -23,11 +23,22 @@ public class ListSortEx {
 					+ stlist.get(i).getMa();
 			stlist.get(i).setTotal(total);
 		}
-		Collections.sort(stlist, new SortTotal());
-		
-		for(int i=0; i<stlist.size(); i++) {
-				stlist.get(i).setGrade(i+1);
+		for(int i =0; i<stlist.size(); i++) {
+			stlist.get(i).setGrade(1);
 		}
+		for(int i = 0; i< stlist.size(); i++){										//석차
+			for(int j =0; j<stlist.size(); j++){
+				if(stlist.get(i).getTotal() < stlist.get(j).getTotal()){
+					stlist.get(i).setGrade(stlist.get(i).getGrade()+1);
+				}
+			}
+		}
+		
+//		Collections.sort(stlist, new SortTotal());
+//		
+//		for(int i=0; i<stlist.size(); i++) {
+//				stlist.get(i).setGrade(i+1);
+//		}
 //		Collections.shuffle(stlist);
 //		
 //		System.out.println("=============정렬 전===============");
@@ -47,6 +58,10 @@ public class ListSortEx {
 		}
 		
 		Collections.sort(stlist, new SortTotal());
+//		for(int i =0; i<stlist.size(); i++) {
+//			if(!stlist.get(i).getTotal().cotains())
+//			
+//		}
 		System.out.println("===========총점--외부정렬============");
 		
 		for(Student st : stlist) {
@@ -136,11 +151,10 @@ class SortTotal implements Comparator<Student>{
 
 	@Override
 	public int compare(Student st1, Student st2) {
-			
+			int score = 0;
 				if(st1.getTotal() > st2.getTotal()) {
 					return -1;
 				}else if (st1.getTotal() == st2.getTotal()) {
-					
 					return -1;
 				}else {
 					return 1;
