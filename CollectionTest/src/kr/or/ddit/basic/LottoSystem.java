@@ -10,20 +10,21 @@ import java.util.Set;
 import java.util.SortedSet;
 
 public class LottoSystem {
+	int count =0;
+	int money =1000;
+	int bankbook =200000;
+	int request=0;
+	boolean logout;
+	
 	Scanner scan = new Scanner(System.in);
 	List<Integer> users =new ArrayList<>();
 	List<Integer> list =new ArrayList<>();
 	List<Integer> checkNum =new ArrayList<Integer>();
-	int count;
-	int money =0;
-	int bankbook =200000;
-	int request=0;
-	boolean logout;
+	
 	public static void main(String[] args) {
 		LottoSystem start = new LottoSystem();
 		start.gameStart();
 	}
-	
 	public  void randomNum() {
 		if(logout == false) {
 			
@@ -75,10 +76,10 @@ public class LottoSystem {
 			users.add(n5);
 			users.add(n6);
 		}
-		users.clear();
 	}
 	
 	public void numCheck() {
+		count=0;
 		for(int i=0; i<users.size(); i++){
 			for(int j=0; j<list.size(); j++){
 				if(users.get(i)== list.get(j)){  // 값이 같은지 비교
@@ -93,7 +94,7 @@ public class LottoSystem {
 		if(logout == false) {
 			int request=Integer.parseInt(scan.nextLine());
 			int ttt =bankbook-request;
-			if(ttt >0) {
+			if(ttt >=0) {
 				bankbook=bankbook-request;
 				money = request;
 			}else {
@@ -108,17 +109,19 @@ public class LottoSystem {
 	public void buyLotto() {
 		int lotto=0;
 		if(logout == false) {
-			
 			System.out.println("로또를 구매 하시겠습니까?");
 			System.out.println("1.네\t2.아니요");
 			
 			int yesNo=Integer.parseInt(scan.nextLine());
 			if(yesNo == 1) {
 				if(this.money>=1000) {
+					System.out.println("천원짜리 로또한장을 구매했습니다.");
 					System.out.println("잔돈 " + (money-= 1000)+ "원 입니다.");
 					
-				}else {												
-//					System.exit(money);;
+				}else if(yesNo ==2){
+					System.exit(0);;
+				}else {
+					System.out.println("지갑에 금액이 부족합니다.");
 					System.out.println("가까운 ATM기에서 돈을 인출하러갑니다.");		
 					System.out.println("인출하실 금액을 입력해주세요");
 					mybank();
@@ -130,37 +133,40 @@ public class LottoSystem {
 	}
 	public void gameStart() {
 		int ok = 0;
-		if(logout == false) {
+		System.out.println("로또 구매프로그램을 시작합니다.");
+		System.out.println("지갑에 " +money+"원을 가지고 있습니다.");
 			do {
-			buyLotto();
-			inputNum();
-			randomNum();
-			numCheck();
-			if(count == 6) {
-				System.out.println("축하드립니다!! 1등! 상금 200억원입니다.");
-				System.out.println("1등 됬으니 해외로 튀자!!");
+				buyLotto();
+				randomNum();
+				inputNum();
+				numCheck();
+				
+				if(logout == false) {
+					if(count == 6) {
+						System.out.println("축하드립니다!! 1등! 상금 200억원입니다.");
+						System.out.println("1등 됬으니 해외로 튀자!!");
+						ok=6;
+					}else if (count == 5) {
+						System.out.println("축하드립니다!! 2등! 상금 3억원입니다.");
+						System.out.println("2등 됬으니 제주도 여행가자!!");
+						ok=6;
+					}else if(count == 4) {
+						System.out.println("축하드립니다!! 3등! 상금 1만원입니다.");
+					}else if(count == 3 ) {
+						System.out.println("축하드립니다!! 4등! 상금 5백원");
+					}else if(count ==2){
+							System.out.println("아쉽지만 2개론부족해요..");
+					}else if(count ==1) {
+							System.out.println("1개라니....");
+					}else if(count ==0){
+							System.out.println("눈감고 찍어도 그거보다 1개는나오겠다.");
+					}else if(logout == true) {
+						ok=6;
+					}
+				}else {
 					ok=6;
-			}else if (count == 5) {
-				System.out.println("축하드립니다!! 2등! 상금 3억원입니다.");
-				System.out.println("2등 됬으니 제주도 여행가자!!");
-				ok=6;
-			}else if(count == 4) {
-				System.out.println("축하드립니다!! 3등! 상금 1만원입니다.");
-			}else if(count == 3 ) {
-				System.out.println("축하드립니다!! 4등! 상금 5백원");
-			}else if(count ==2){
-					System.out.println("아쉽지만 2개론부족해요..");
-			}else if(count ==1) {
-					System.out.println("1개라니....");
-			}else if(count ==0){
-					System.out.println("눈감고 찍어도 그거보다 1개는나오겠다.");
-			}
+				}
 			}while(ok!=6);
-			
-		}
-//		if(logout == true) {
-//			
-//		}
 	}
 
 }
