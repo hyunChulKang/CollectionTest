@@ -12,7 +12,7 @@ public class T10_SetTest {
 		
 		//영어 대문자를 문자열로 변환하여 TreeSet에 저장
 		for(char ch='Z'; ch>='A'; ch--) {				//자동 정렬을 보여주기 위해 Z부터 시작한다.
-			String temp =String.valueOf(ch);
+			String temp =String.valueOf(ch);	//ch타입을 String 타입으로 형변환(Integer.parseInt랑 비슷)
 			ts.add(temp);
 		}
 		
