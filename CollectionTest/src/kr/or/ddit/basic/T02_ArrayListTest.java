@@ -82,7 +82,7 @@ public class T02_ArrayListTest {
 		//String[] strArr2 = (String[]) list2.toArray(); // java.lang.ClassCastException: [Ljava.lang.Object; cannot be cast to [Ljava.lang.String;
 		
 		// 리스트의 제네릭 타입에 맞는 자료형의 배열로 변환하는 방법
-		// 제네릭타입의 0개짜리 배열을 생성해서 매개변수로 넣어준다.=> 배열의 크기가 리스트 크기보다 작으면 리스트의 크기에 맞는 배열을 생성한다.
+		// 제네릭타입의 0개짜리 배열을 생성해서 매	개변수로 넣어준다.=> 배열의 크기가 리스트 크기보다 작으면 리스트의 크기에 맞는 배열을 생성한다.
 		// 형식) toArray(new 제네릭타입[0])
 		String[] strArr2 = list2.toArray(new String[0]);
 		System.out.println("strArr2의 개수 : " + strArr2.length);

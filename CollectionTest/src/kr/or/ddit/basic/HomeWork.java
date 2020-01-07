@@ -95,7 +95,6 @@ public class HomeWork {
 		
 		while(it.hasNext()) {						// interator로 list안에 있는것을 읽어와서 it 저장하면
 			System.out.print(it.next());			//hasNext로 읽어올 요소가 있으면 true 없으면 false를 남겨서
-													//next가 다음요소를 불러온다.
 		}
 		
 	}

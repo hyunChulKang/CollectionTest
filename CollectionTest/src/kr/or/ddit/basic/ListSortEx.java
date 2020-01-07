@@ -33,7 +33,6 @@ public class ListSortEx {
 				}
 			}
 		}
-		
 //		Collections.sort(stlist, new SortTotal());
 //		
 //		for(int i=0; i<stlist.size(); i++) {
@@ -57,11 +56,13 @@ public class ListSortEx {
 			System.out.println(","+st.getGrade());
 		}
 		
+		
 		Collections.sort(stlist, new SortTotal());
 //		for(int i =0; i<stlist.size(); i++) {
 //			if(!stlist.get(i).getTotal().cotains())
 //			
 //		}
+		
 		System.out.println("===========총점--외부정렬============");
 		
 		for(Student st : stlist) {
@@ -162,3 +163,5 @@ class SortTotal implements Comparator<Student>{
 	}
 	
 }
+
+

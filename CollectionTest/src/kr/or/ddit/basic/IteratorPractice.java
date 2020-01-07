@@ -51,6 +51,5 @@ public class IteratorPractice {
 		System.out.println(a.get("two"));
 		System.out.println(a.get("three"));
 
-			
 	}
 }
